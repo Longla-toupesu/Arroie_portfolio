@@ -1,0 +1,46 @@
+<section id="projects" class="featured-projects section">
+  <div class="container">
+    <h2 class="section-title">FEATURED PROJECTS</h2>
+    <p class="projects-subtitle">
+      Explore some of my best work in game development and infrastructure.
+    </p>
+
+    <div class="projects-grid">
+      <div class="project-card" *ngFor="let project of projects">
+        <div class="project-image">
+          <img [src]="project.image" [alt]="project.title">
+          <div class="project-overlay">
+            <div class="platform-badge">{{ project.platform }}</div>
+          </div>
+        </div>
+
+        <div class="project-content">
+          <h3 class="project-title">{{ project.title }}</h3>
+          <p class="project-description">{{ project.description }}</p>
+          <p class="project-role"><strong>Role:</strong> {{ project.role }}</p>
+
+          <div class="project-tags">
+            <span class="tag" *ngFor="let tag of project.tags">{{ tag }}</span>
+          </div>
+
+          <div class="project-actions">
+            <button class="btn btn-primary" (click)="viewProjectDetails(project.id)">
+              VIEW DETAILS
+            </button>
+            <button class="btn btn-secondary" (click)="viewCode(project.id)">
+              VIEW CODE
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cta-section">
+      <h3 class="cta-title">READY TO LEVEL UP YOUR NEXT GAME?</h3>
+      <p class="cta-subtitle">Let's create something unforgettable</p>
+      <button class="btn btn-accent" (click)="viewAllProjects()">
+        VIEW ALL PROJECTS
+      </button>
+    </div>
+  </div>
+</section>

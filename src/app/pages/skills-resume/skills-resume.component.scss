@@ -1,0 +1,327 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+
+.skills-resume-page {
+  min-height: 100vh;
+  background: $base-bg;
+}
+
+.main-content {
+  padding-top: 80px;
+}
+
+.page-header {
+  padding: 4rem 0 3rem;
+  text-align: center;
+  background: linear-gradient(180deg, darken($base-bg, 2%), $base-bg);
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, $primary, transparent);
+  }
+}
+
+.page-title {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, $primary, $secondary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 700;
+}
+
+.page-subtitle {
+  font-size: 1.2rem;
+  color: #e8e8e8;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.section {
+  padding: 4rem 0;
+}
+
+.section-header {
+  margin-bottom: 3rem;
+}
+
+.section-title {
+  font-size: clamp(2rem, 4vw, 2.5rem);
+  color: $primary;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  position: relative;
+  display: inline-block;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, $primary, $secondary);
+  }
+}
+
+// Technical Skills - COMPLETELY SOLID
+.technical-skills {
+  background: $base-bg;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  align-items: stretch;
+}
+
+.skill-card {
+  background: #1e1e1e; // COMPLETELY SOLID
+  padding: 2.5rem 2rem;
+  border-radius: 12px;
+  border: 2px solid $secondary;
+  transition: all 0.3s ease;
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+  position: relative;
+
+  &:hover {
+    transform: translateY(-8px) !important;
+    border-color: $secondary;
+    box-shadow: 0 0 30px rgba($secondary, 0.6), 0 0 60px rgba($secondary, 0.3);
+    background: #252525;
+  }
+}
+
+.skill-title {
+  font-size: 1.6rem;
+  color: $secondary;
+  margin-bottom: 1rem;
+  font-weight: 700;
+  text-shadow: 0 0 15px rgba($secondary, 0.6);
+}
+
+.skill-items {
+  color: #e8e8e8;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  font-weight: 500;
+}
+
+// Professional Experience - COMPLETELY SOLID
+.professional-experience {
+  background: linear-gradient(180deg, $base-bg, darken($base-bg, 2%));
+}
+
+.experience-list {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.experience-item {
+  background: #1e1e1e; // COMPLETELY SOLID
+  padding: 3rem;
+  border-radius: 16px;
+  border: 2px solid $primary;
+  position: relative;
+  transition: all 0.3s ease;
+  opacity: 1 !important;
+  transform: translateX(0) !important;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, $primary, $secondary);
+  }
+
+  &:hover {
+    transform: translateX(10px) !important;
+    border-color: $secondary;
+    box-shadow: 0 0 30px rgba($primary, 0.6), 0 0 60px rgba($primary, 0.3);
+    background: #252525;
+  }
+}
+
+.exp-title {
+  font-size: 2rem;
+  color: $secondary;
+  margin-bottom: 0.75rem;
+  font-weight: 700;
+  text-shadow: 0 0 15px rgba($secondary, 0.6);
+}
+
+.exp-meta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.exp-period {
+  color: #e0e0e0;
+  font-family: $font-mono;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.exp-separator {
+  color: #888;
+}
+
+.exp-location {
+  color: #e0e0e0;
+  font-size: 1rem;
+}
+
+.exp-description {
+  color: #e8e8e8;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  font-weight: 400;
+}
+
+// Certifications - COMPLETELY SOLID
+.certifications {
+  background: $base-bg;
+}
+
+.certifications-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  align-items: stretch;
+}
+
+.cert-card {
+  background: #1e1e1e; // COMPLETELY SOLID
+  padding: 2.5rem 2rem;
+  border-radius: 12px;
+  border: 2px solid $primary;
+  text-align: center;
+  transition: all 0.3s ease;
+  position: relative;
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, $primary, $secondary, $accent);
+  }
+
+  &:hover {
+    transform: translateY(-8px) !important;
+    border-color: $secondary;
+    box-shadow: 0 0 30px rgba($primary, 0.6), 0 0 60px rgba($primary, 0.3);
+    background: #252525;
+  }
+}
+
+.cert-title {
+  font-size: 1.6rem;
+  color: $secondary;
+  margin-bottom: 1rem;
+  font-weight: 700;
+  text-shadow: 0 0 15px rgba($secondary, 0.6);
+}
+
+.cert-issuer {
+  color: #e8e8e8;
+  font-size: 1rem;
+  font-family: $font-mono;
+  font-weight: 500;
+}
+
+// Download CV Section - COMPLETELY SOLID
+.download-cv-section {
+  padding: 5rem 0;
+  background: linear-gradient(135deg, darken($base-bg, 3%), $base-bg);
+}
+
+.download-card {
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+  background: #1e1e1e; // COMPLETELY SOLID
+  padding: 4rem 3rem;
+  border-radius: 20px;
+  border: 2px solid $secondary;
+  position: relative;
+  opacity: 1 !important;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, $primary, $secondary, $accent);
+  }
+
+  &:hover {
+    box-shadow: 0 0 30px rgba($secondary, 0.6), 0 0 60px rgba($secondary, 0.3);
+  }
+}
+
+.download-title {
+  font-size: 2.5rem;
+  color: #fff;
+  margin-bottom: 1rem;
+  font-weight: 700;
+  text-shadow: 0 0 20px rgba($secondary, 0.6);
+}
+
+.download-subtitle {
+  font-size: 1.2rem;
+  color: #e8e8e8;
+  margin-bottom: 2.5rem;
+  font-weight: 400;
+}
+
+.btn {
+  &-primary {
+    padding: 1.2rem 3rem;
+    font-size: 1.1rem;
+  }
+}
+
+@include responsive(tablet) {
+  .skills-grid,
+  .certifications-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .experience-item {
+    padding: 2rem;
+  }
+
+  .download-card {
+    padding: 3rem 2rem;
+  }
+
+  .btn-primary {
+    width: 100%;
+  }
+}

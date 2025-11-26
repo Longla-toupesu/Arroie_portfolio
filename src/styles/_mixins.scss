@@ -1,0 +1,56 @@
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@mixin glow($color, $intensity: 20px) {
+  box-shadow: 0 0 $intensity rgba($color, 0.6),
+              0 0 $intensity * 2 rgba($color, 0.4),
+              0 0 $intensity * 3 rgba($color, 0.2);
+}
+
+@mixin text-glow($color) {
+  text-shadow: 0 0 10px rgba($color, 0.8),
+               0 0 20px rgba($color, 0.6),
+               0 0 30px rgba($color, 0.4);
+}
+
+@mixin gradient-border($width: 2px) {
+  position: relative;
+  background: $dark-card;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: $width;
+    background: linear-gradient(135deg, $primary, $secondary, $accent);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, 
+                  linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+  }
+}
+
+@mixin responsive($breakpoint) {
+  @if $breakpoint == mobile {
+    @media (max-width: $mobile) { @content; }
+  }
+  @if $breakpoint == tablet {
+    @media (max-width: $tablet) { @content; }
+  }
+  @if $breakpoint == desktop {
+    @media (min-width: $desktop) { @content; }
+  }
+  @if $breakpoint == wide {
+    @media (min-width: $wide) { @content; }
+  }
+}

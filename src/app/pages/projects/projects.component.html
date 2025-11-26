@@ -1,0 +1,84 @@
+<div class="projects-page">
+  <app-navbar></app-navbar>
+
+  <main class="main-content">
+    <!-- Page Header -->
+    <section class="page-header">
+      <div class="container">
+        <h1 class="page-title">Featured Projects</h1>
+        <p class="page-subtitle">
+          Explore some of my best work in game development and infrastructure.
+        </p>
+      </div>
+    </section>
+
+    <!-- Filter Section -->
+    <section class="filter-section">
+      <div class="container">
+        <div class="filters">
+          <button 
+            *ngFor="let filter of filters"
+            class="filter-btn"
+            [class.active]="selectedFilter === filter"
+            (click)="filterProjects(filter)">
+            {{ filter }}
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Grid -->
+    <section class="projects-section section">
+      <div class="container">
+        <div class="projects-grid">
+          <div class="project-card" *ngFor="let project of filteredProjects">
+            <!-- Project Image with Badge -->
+            <div class="project-image-wrapper">
+              <img [src]="project.image" [alt]="project.title" class="project-image">
+              <div class="platform-badge">{{ project.platform }}</div>
+            </div>
+
+            <!-- Project Info -->
+            <div class="project-info">
+              <h3 class="project-title">
+                Title: <span class="title-value">{{ project.title }}</span>
+              </h3>
+              
+              <p class="project-description">
+                <strong>Description:</strong> {{ project.description }}
+              </p>
+              
+              <p class="project-role">
+                <strong>Role:</strong> "{{ project.role }}"
+              </p>
+
+              <div class="project-tags">
+                <span class="tech-label">Tech tags:</span>
+                <span class="tag" *ngFor="let tag of project.tags">{{ tag }}</span>
+              </div>
+
+              <div class="project-actions">
+                <button class="btn btn-primary" (click)="viewProjectDetails(project.id)">
+                  VIEW DETAILS
+                </button>
+                <button class="btn btn-secondary" (click)="viewCode(project)">
+                  VIEW CODE
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CTA Section -->
+        <div class="cta-section">
+          <h3 class="cta-title">READY TO LEVEL UP YOUR NEXT GAME?<br>LET'S GET STARTED</h3>
+          <button class="btn btn-accent" (click)="navigateToContact()">
+            VIEW DETAILS
+          </button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <app-footer></app-footer>
+</div>

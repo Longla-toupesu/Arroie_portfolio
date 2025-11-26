@@ -1,0 +1,49 @@
+<section class="experience-section section">
+  <div class="container">
+    <!-- Professional Experience -->
+    <div class="experience-block">
+      <h2 class="section-title">PROFESSIONAL EXPERIENCE</h2>
+
+      <div class="experience-timeline">
+        <div class="experience-card" *ngFor="let exp of experiences; let i = index">
+          <div class="timeline-marker">
+            <div class="marker-dot"></div>
+            <div class="marker-line" *ngIf="i < experiences.length - 1"></div>
+          </div>
+
+          <div class="experience-content">
+            <h3 class="exp-title">{{ exp.title }}</h3>
+            <div class="exp-meta">
+              <span class="company">{{ exp.company }}</span>
+              <span class="separator">|</span>
+              <span class="location">{{ exp.location }}</span>
+            </div>
+            <div class="exp-period">{{ exp.period }}</div>
+            <p class="exp-description">{{ exp.description }}</p>
+
+            <ul class="exp-achievements" *ngIf="exp.achievements">
+              <li *ngFor="let achievement of exp.achievements">
+                <span class="achievement-bullet">▸</span>
+                {{ achievement }}
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Certifications -->
+    <div class="certifications-block">
+      <h2 class="section-title">CERTIFICATIONS</h2>
+
+      <div class="certifications-grid">
+        <div class="cert-card" *ngFor="let cert of certifications">
+          <div class="cert-icon">🏆</div>
+          <h3 class="cert-title">{{ cert.title }}</h3>
+          <p class="cert-issuer">{{ cert.issuer }}</p>
+          <p class="cert-year">{{ cert.year }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

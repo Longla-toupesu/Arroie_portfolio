@@ -1,0 +1,110 @@
+<div class="project-detail-page">
+  <app-navbar></app-navbar>
+
+  <main class="main-content" *ngIf="project">
+    <!-- Hero Section -->
+    <section class="project-hero">
+      <div class="container">
+        <div class="hero-header">
+          <h1 class="project-title">{{ project.title }}</h1>
+          <p class="project-meta">{{ project.platform }} Space Shooter | Unity | C# | Firebase</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Overview Section -->
+    <section class="overview-section section">
+      <div class="container">
+        <h2 class="section-title">OVERVIEW</h2>
+        
+        <div class="overview-content">
+          <p class="overview-description">{{ project.description }}</p>
+
+          <div class="overview-grid">
+            <div class="overview-item">
+              <div class="item-label">Role</div>
+              <div class="item-value">{{ project.role }}</div>
+            </div>
+            <div class="overview-item">
+              <div class="item-label">Team Size</div>
+              <div class="item-value">{{ project.teamSize }}</div>
+            </div>
+            <div class="overview-item">
+              <div class="item-label">Platform</div>
+              <div class="item-value">{{ project.platform }}, PC</div>
+            </div>
+            <div class="overview-item">
+              <div class="item-label">Year</div>
+              <div class="item-value">{{ project.year }}</div>
+            </div>
+            <div class="overview-item" *ngIf="project.downloads">
+              <div class="item-label">Downloads</div>
+              <div class="item-value">{{ project.downloads }}</div>
+            </div>
+            <div class="overview-item">
+              <div class="item-label">Dev Time</div>
+              <div class="item-value">{{ project.devTime }}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery-section section" *ngIf="project.gallery && project.gallery.length > 0">
+      <div class="container">
+        <h2 class="section-title">GALLERY</h2>
+        
+        <div class="gallery-grid">
+          <div class="gallery-item" *ngFor="let image of project.gallery; let i = index">
+            <img [src]="image" [alt]="'Screenshot ' + (i + 1)">
+            <p class="gallery-caption">Screenshot Name</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section section" *ngIf="project.features">
+      <div class="container">
+        <h2 class="section-title">KEY FEATURES & CONTRIBUTIONS</h2>
+        
+        <div class="features-list">
+          <div class="feature-item" *ngFor="let feature of project.features">
+            {{ feature }}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Outcome Section -->
+    <section class="outcome-section section" *ngIf="project.outcome">
+      <div class="container">
+        <h2 class="section-title">OUTCOME</h2>
+        
+        <div class="outcome-content">
+          <p class="outcome-text">{{ project.outcome }}</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Try the Game Section -->
+    <section class="try-game-section">
+      <div class="container">
+        <div class="try-game-content">
+          <h2 class="try-game-title">TRY THE GAME</h2>
+          <div class="try-game-buttons">
+            <button class="btn btn-primary" (click)="openLiveDemo()" *ngIf="project.links?.live">
+              PLAY ON ITCH.IO
+            </button>
+            <button class="btn btn-secondary" (click)="openGithub()" *ngIf="project.links?.github">
+              VIEW GITHUB REPO
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <app-footer></app-footer>
+</div>

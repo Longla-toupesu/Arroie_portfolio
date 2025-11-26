@@ -1,0 +1,83 @@
+<div class="skills-resume-page">
+  <app-navbar></app-navbar>
+
+  <main class="main-content">
+    <!-- Page Header -->
+    <section class="page-header">
+      <div class="container">
+        <h1 class="page-title">Skills & Résumé</h1>
+        <p class="page-subtitle">
+          My technical strengths and professional journey as a Game Developer
+        </p>
+      </div>
+    </section>
+
+    <!-- Technical Skills -->
+    <section class="technical-skills section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">TECHNICAL SKILLS</h2>
+        </div>
+
+        <div class="skills-grid">
+          <div class="skill-card" *ngFor="let skill of technicalSkills">
+            <h3 class="skill-title">{{ skill.title }}</h3>
+            <p class="skill-items">{{ skill.items[0] }}</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Professional Experience -->
+    <section class="professional-experience section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">PROFESSIONAL EXPERIENCE</h2>
+        </div>
+
+        <div class="experience-list">
+          <div class="experience-item" *ngFor="let exp of experiences">
+            <h3 class="exp-title">{{ exp.title }}</h3>
+            <div class="exp-meta">
+              <span class="exp-period">{{ exp.period }}</span>
+              <span class="exp-separator">|</span>
+              <span class="exp-location">{{ exp.location }}</span>
+            </div>
+            <p class="exp-description">{{ exp.description }}</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Certifications -->
+    <section class="certifications section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">CERTIFICATIONS</h2>
+        </div>
+
+        <div class="certifications-grid">
+          <div class="cert-card" *ngFor="let cert of certifications">
+            <h3 class="cert-title">{{ cert.title }}</h3>
+            <p class="cert-issuer">{{ cert.issuer }} | {{ cert.year }}</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Download CV Section -->
+    <section class="download-cv-section">
+      <div class="container">
+        <div class="download-card">
+          <h3 class="download-title">Want the full details?</h3>
+          <p class="download-subtitle">Download my complete CV for more information</p>
+          <button class="btn btn-primary" (click)="downloadCV()">
+            DOWNLOAD CV (PDF)
+          </button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <app-footer></app-footer>
+</div>

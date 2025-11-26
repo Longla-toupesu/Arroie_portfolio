@@ -1,0 +1,64 @@
+<section id="about" class="about-section section">
+  <div class="container">
+    <div class="about-header">
+      <h2 class="section-title">ABOUT ME</h2>
+    </div>
+
+    <div class="about-main">
+      <!-- Left Side - Profile Info -->
+      <div class="profile-card">
+        <div class="profile-image-wrapper">
+          <div class="profile-image">
+            <div class="avatar-placeholder">
+              <span class="avatar-text">CA</span>
+            </div>
+          </div>
+          <div class="profile-status">
+            <span class="status-dot"></span>
+            Available for Work
+          </div>
+        </div>
+
+        <div class="profile-info">
+          <h3 class="profile-name">Chenwie Asang</h3>
+          <p class="profile-title">Game Developer & ICT Professional</p>
+          <p class="profile-tagline">"Building Worlds, One Game at a Time"</p>
+
+          <div class="profile-actions">
+            <button class="btn btn-primary" (click)="downloadResume()">DOWNLOAD RESUME</button>
+            <button class="btn btn-secondary" (click)="openLinkedIn()">LINKEDIN PROFILE</button>
+            <button class="btn btn-accent" (click)="navigateToContact()">CONTACT ME</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Side - About Content -->
+      <div class="about-content">
+        <div class="about-intro">
+          <h3 class="intro-title">From building immersive worlds to trading crypto markets</h3>
+          <p class="intro-text">
+            I'm Chenwie Asang, a Game Developer and ICT Professional with 4+ years 
+            of experience creating interactive experiences and optimizing game infrastructure. 
+            My work spans from designing and developing gameplay systems in Unity to building 
+            automated CI/CD pipelines that cut deployment times by 25%.
+          </p>
+          <p class="intro-text">
+            As a community leader, I've grown and managed vibrant gaming spaces, boosting 
+            engagement by over 40% through creative strategies. I'm passionate about crafting 
+            immersive worlds that captivate players and push the boundaries of what games can achieve.
+          </p>
+        </div>
+
+        <div class="stats-row">
+          <div class="stat-item" *ngFor="let stat of stats">
+            <div class="stat-icon">{{ stat.icon }}</div>
+            <div class="stat-details">
+              <div class="stat-value">{{ stat.value }}</div>
+              <div class="stat-label">{{ stat.label }}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

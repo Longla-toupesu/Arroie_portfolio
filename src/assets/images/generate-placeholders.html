@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generate Placeholder Images</title>
+</head>
+<body>
+    <canvas id="canvas" width="800" height="600"></canvas>
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+
+        // Project placeholder
+        const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+        gradient.addColorStop(0, '#7950f2');
+        gradient.addColorStop(0.5, '#4fd1ff');
+        gradient.addColorStop(1, '#00ffab');
+
+        ctx.fillStyle = gradient;
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        // Add text
+        ctx.fillStyle = '#ffffff';
+        ctx.font = 'bold 48px Rajdhani, sans-serif';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText('PROJECT GAMEPLAY', canvas.width / 2, canvas.height / 2 - 30);
+        
+        ctx.font = '24px Rajdhani, sans-serif';
+        ctx.fillText('Screenshot', canvas.width / 2, canvas.height / 2 + 20);
+
+        // Download image
+        setTimeout(() => {
+            const link = document.createElement('a');
+            link.download = 'project-placeholder.jpg';
+            link.href = canvas.toDataURL('image/jpeg');
+            link.click();
+        }, 500);
+    </script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+<section class="tech-stack section">
+  <div class="container">
+    <h2 class="tech-stack-title">MY TECH STACK</h2>
+    <p class="tech-subtitle">
+      Building worlds, optimizing pipelines, and leveling up systems.
+    </p>
+
+    <div class="tech-grid">
+      <div class="tech-card" *ngFor="let tech of techStack">
+        <div class="tech-icon">{{ tech.icon }}</div>
+        <h3 class="tech-name">{{ tech.name }}</h3>
+        <p class="tech-category">{{ tech.category }}</p>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,278 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+
+.about-section {
+  background: linear-gradient(180deg, $base-bg 0%, darken($base-bg, 2%) 100%);
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, $accent, transparent);
+  }
+}
+
+.about-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.about-main {
+  display: grid;
+  grid-template-columns: 400px 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+// Profile Card
+.profile-card {
+  background: $dark-card;
+  border-radius: 16px;
+  padding: 2.5rem;
+  border: 1px solid rgba($primary, 0.3);
+  position: sticky;
+  top: 100px;
+  @include glow($primary, 10px);
+}
+
+.profile-image-wrapper {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.profile-image {
+  width: 200px;
+  height: 200px;
+  margin: 0 auto 1rem;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: -5px;
+    background: linear-gradient(135deg, $primary, $secondary, $accent);
+    border-radius: 50%;
+    animation: spin 8s linear infinite;
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.avatar-placeholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, darken($primary, 20%), darken($secondary, 20%));
+  border-radius: 50%;
+  @include flex-center;
+  position: relative;
+  z-index: 1;
+
+  .avatar-text {
+    font-size: 5rem;
+    font-weight: 700;
+    color: #fff;
+    font-family: $font-primary;
+    text-shadow: 0 0 20px rgba($secondary, 0.8);
+  }
+}
+
+.profile-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1.5rem;
+  background: rgba($secondary, 0.1);
+  border: 1px solid $secondary;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  color: $secondary;
+  font-weight: 600;
+
+  .status-dot {
+    width: 10px;
+    height: 10px;
+    background: $secondary;
+    border-radius: 50%;
+    animation: pulse-glow 2s infinite;
+  }
+}
+
+.profile-info {
+  text-align: center;
+}
+
+.profile-name {
+  font-size: 2rem;
+  color: #fff;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+}
+
+.profile-title {
+  font-size: 1.1rem;
+  color: $accent;
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+}
+
+.profile-tagline {
+  font-size: 0.95rem;
+  color: rgba(#fff, 0.7);
+  font-style: italic;
+  margin-bottom: 2rem;
+  font-family: $font-mono;
+}
+
+.profile-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  .btn {
+    width: 100%;
+    font-size: 0.95rem;
+    padding: 0.85rem 1.5rem;
+  }
+}
+
+// About Content
+.about-content {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.about-intro {
+  background: $dark-card;
+  padding: 3rem;
+  border-radius: 16px;
+  border: 1px solid rgba($primary, 0.3);
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, $primary, $secondary, $accent);
+  }
+}
+
+.intro-title {
+  font-size: 2rem;
+  color: $secondary;
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.intro-text {
+  color: rgba(#fff, 0.9);
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+// Stats Row
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+}
+
+.stat-item {
+  background: $dark-card;
+  padding: 2rem 1.5rem;
+  border-radius: 12px;
+  border: 1px solid rgba($primary, 0.3);
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+    border-color: $secondary;
+    @include glow($primary, 15px);
+
+    .stat-icon {
+      transform: scale(1.2);
+    }
+  }
+}
+
+.stat-icon {
+  font-size: 3rem;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.stat-details {
+  flex: 1;
+}
+
+.stat-value {
+  font-size: 2rem;
+  font-weight: 700;
+  color: $secondary;
+  font-family: $font-primary;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+  @include text-glow($secondary);
+}
+
+.stat-label {
+  font-size: 0.9rem;
+  color: rgba(#fff, 0.8);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  line-height: 1.3;
+}
+
+@include responsive(tablet) {
+  .about-main {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .profile-card {
+    position: relative;
+    top: 0;
+  }
+
+  .about-intro {
+    padding: 2rem;
+  }
+
+  .intro-title {
+    font-size: 1.5rem;
+  }
+
+  .stats-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+@include responsive(desktop) {
+  .about-main {
+    grid-template-columns: 350px 1fr;
+  }
+}

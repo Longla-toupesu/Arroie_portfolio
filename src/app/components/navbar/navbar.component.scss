@@ -1,0 +1,230 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: $z-navbar;
+  padding: 1.5rem 0;
+  transition: all 0.3s ease;
+  background: rgba($base-bg, 0.8);
+  backdrop-filter: blur(10px);
+
+  &.scrolled {
+    padding: 1rem 0;
+    background: rgba($base-bg, 0.95);
+    box-shadow: 0 4px 20px rgba($primary, 0.1);
+  }
+}
+
+.navbar-content {
+  @include flex-between;
+  gap: 2rem;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  font-family: $font-primary;
+  letter-spacing: 2px;
+  cursor: pointer;
+  position: relative;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, $primary, $secondary);
+    transition: width 0.3s ease;
+  }
+
+  &:hover::after {
+    width: 100%;
+  }
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 2.5rem;
+  margin: 0;
+
+  li a {
+    font-family: $font-primary;
+    font-size: 1.1rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    position: relative;
+    cursor: pointer;
+    transition: color 0.3s ease;
+
+    &::before {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: $secondary;
+      transition: width 0.3s ease;
+    }
+
+    &:hover,
+    &.active {
+      color: $secondary;
+
+      &::before {
+        width: 100%;
+      }
+    }
+  }
+}
+
+.social-links {
+  display: flex;
+  gap: 1.5rem;
+
+  a {
+    width: 40px;
+    height: 40px;
+    @include flex-center;
+    border-radius: 50%;
+    background: rgba($primary, 0.1);
+    border: 1px solid rgba($primary, 0.3);
+    font-family: $font-primary;
+    font-weight: 700;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background: $primary;
+      border-color: $primary;
+      transform: translateY(-3px);
+      @include glow($primary, 10px);
+    }
+  }
+}
+
+.mobile-menu-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: transparent;
+  padding: 0.5rem;
+  cursor: pointer;
+
+  span {
+    width: 25px;
+    height: 3px;
+    background: $secondary;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+  }
+
+  &.active {
+    span:nth-child(1) {
+      transform: rotate(45deg) translate(8px, 8px);
+    }
+
+    span:nth-child(2) {
+      opacity: 0;
+    }
+
+    span:nth-child(3) {
+      transform: rotate(-45deg) translate(7px, -7px);
+    }
+  }
+}
+
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 80px;
+  left: 0;
+  width: 100%;
+  height: calc(100vh - 80px);
+  background: rgba($base-bg, 0.98);
+  backdrop-filter: blur(20px);
+  padding: 2rem;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+
+  &.open {
+    transform: translateX(0);
+  }
+}
+
+.mobile-nav-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  li {
+    margin-bottom: 2rem;
+
+    a {
+      font-family: $font-primary;
+      font-size: 1.5rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      display: block;
+      padding: 0.5rem 0;
+      cursor: pointer;
+      transition: all 0.3s ease;
+
+      &:hover {
+        color: $secondary;
+        padding-left: 1rem;
+      }
+    }
+  }
+}
+
+.mobile-social-links {
+  display: flex;
+  gap: 1rem;
+  margin-top: 3rem;
+
+  a {
+    width: 50px;
+    height: 50px;
+    @include flex-center;
+    border-radius: 50%;
+    background: rgba($primary, 0.1);
+    border: 1px solid rgba($primary, 0.3);
+    font-family: $font-primary;
+    font-weight: 700;
+    font-size: 1.3rem;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background: $primary;
+      @include glow($primary, 10px);
+    }
+  }
+}
+
+.desktop-nav {
+  display: flex;
+}
+
+@include responsive(tablet) {
+  .desktop-nav {
+    display: none;
+  }
+
+  .mobile-menu-toggle {
+    display: flex;
+  }
+
+  .mobile-menu {
+    display: block;
+  }
+}

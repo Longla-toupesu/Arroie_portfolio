@@ -1,0 +1,31 @@
+// Colors
+$primary: #7950f2;
+$secondary: #00ffab;
+$accent: #4fd1ff;
+$base-bg: #0d0d0d;
+$dark-card: #1a1a1a;
+$darker: #0a0a0a;
+
+// Typography
+$font-primary: 'Rajdhani', sans-serif;
+$font-secondary: 'Roboto', sans-serif;
+$font-mono: 'VT323', monospace;
+
+// Spacing
+$spacing-xs: 0.5rem;
+$spacing-sm: 1rem;
+$spacing-md: 2rem;
+$spacing-lg: 4rem;
+$spacing-xl: 6rem;
+
+// Breakpoints
+$mobile: 480px;
+$tablet: 768px;
+$desktop: 1024px;
+$wide: 1440px;
+
+// Z-index
+$z-background: -1;
+$z-content: 1;
+$z-navbar: 100;
+$z-modal: 1000;

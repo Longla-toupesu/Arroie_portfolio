@@ -1,0 +1,66 @@
+<nav class="navbar" [class.scrolled]="isScrolled">
+  <div class="container">
+    <div class="navbar-content">
+      <!-- Logo -->
+      <a class="logo" [routerLink]="['/']" (click)="closeMobileMenu()">
+        CHENWIE ARROIE A.
+      </a>
+
+      <!-- Desktop Navigation -->
+      <ul class="nav-links desktop-nav">
+        <li *ngFor="let link of navLinks">
+          <a 
+            [routerLink]="[link.path]"
+            [class.active]="isActiveRoute(link.path)"
+            (click)="closeMobileMenu()">
+            {{ link.label }}
+          </a>
+        </li>
+      </ul>
+
+      <!-- Social Links -->
+      <!--<div class="social-links desktop-nav">
+        <a *ngFor="let social of socialLinks" 
+           [href]="social.url" 
+           [title]="social.label"
+           target="_blank"
+           rel="noopener noreferrer">
+          {{ social.icon }}
+        </a>
+      </div>-->
+
+      <!-- Mobile Menu Toggle -->
+      <button class="mobile-menu-toggle" 
+              (click)="toggleMobileMenu()"
+              [class.active]="isMobileMenuOpen"
+              aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" [class.open]="isMobileMenuOpen">
+    <ul class="mobile-nav-links">
+      <li *ngFor="let link of navLinks">
+        <a 
+          [routerLink]="[link.path]"
+          [class.active]="isActiveRoute(link.path)"
+          (click)="closeMobileMenu()">
+          {{ link.label }}
+        </a>
+      </li>
+    </ul>
+    <div class="mobile-social-links">
+      <a *ngFor="let social of socialLinks" 
+         [href]="social.url"
+         [title]="social.label"
+         target="_blank"
+         rel="noopener noreferrer">
+        {{ social.icon }}
+      </a>
+    </div>
+  </div>
+</nav>

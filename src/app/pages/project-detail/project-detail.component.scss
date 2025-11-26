@@ -1,0 +1,296 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+
+.project-detail-page {
+    min-height: 100vh;
+    background: $base-bg;
+}
+
+.main-content {
+    padding-top: 80px;
+}
+
+.project-hero {
+    padding: 4rem 0 3rem;
+    background: linear-gradient(180deg, darken($base-bg, 2%), $base-bg);
+    text-align: center;
+    position: relative;
+
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, $primary, transparent);
+    }
+}
+
+.hero-header {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.project-title {
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    color: #fff;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    line-height: 1.1;
+}
+
+.project-meta {
+    font-size: 1.3rem;
+    color: rgba(#fff, 0.8);
+    font-family: $font-primary;
+}
+
+.section {
+    padding: 4rem 0;
+}
+
+.section-title {
+    font-size: clamp(2rem, 4vw, 2.5rem);
+    color: $primary;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 3rem;
+    position: relative;
+    display: inline-block;
+
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: -8px;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background: linear-gradient(90deg, $primary, $secondary);
+    }
+}
+
+// Overview Section
+.overview-section {
+    background: $base-bg;
+}
+
+.overview-content {
+    //max-width: 1200px;
+    text-align: center;
+}
+
+.overview-description {
+    color: rgba(#fff, 0.9);
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 3rem;
+}
+
+.overview-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.overview-item {
+    background: $dark-card;
+    padding: 2rem 1.5rem;
+    border-radius: 8px;
+    border: 1px solid rgba($primary, 0.3);
+    text-align: center;
+    transition: all 0.3s ease;
+
+    &:hover {
+        transform: translateY(-5px);
+        border-color: $secondary;
+        @include glow($primary, 10px);
+    }
+}
+
+.item-label {
+    font-size: 0.9rem;
+    color: rgba(#fff, 0.6);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 0.75rem;
+    font-family: $font-mono;
+}
+
+.item-value {
+    font-size: 1.5rem;
+    color: $secondary;
+    font-weight: 700;
+    font-family: $font-primary;
+}
+
+// Gallery Section
+.gallery-section {
+    background: linear-gradient(180deg, $base-bg, darken($base-bg, 2%));
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.gallery-item {
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid rgba($primary, 0.3);
+    transition: all 0.3s ease;
+    background: $dark-card;
+
+    &:hover {
+        transform: translateY(-5px);
+        border-color: $secondary;
+        @include glow($primary, 15px);
+    }
+
+    img {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        display: block;
+    }
+}
+
+.gallery-caption {
+    padding: 1rem;
+    text-align: center;
+    color: rgba(#fff, 0.8);
+    font-size: 0.95rem;
+    font-family: $font-primary;
+}
+
+// Features Section
+.features-section {
+    justify-self: center;
+    background: $base-bg;
+}
+
+.features-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    //max-width: 1200px;
+}
+
+.feature-item {
+    background: $dark-card;
+    padding: 1.5rem 2rem;
+    border-radius: 8px;
+    border-left: 4px solid $secondary;
+    color: rgba(#fff, 0.9);
+    font-size: 1.05rem;
+    line-height: 1.6;
+    transition: all 0.3s ease;
+    width: auto;
+
+    &:hover {
+        transform: translateX(10px);
+        background: lighten($dark-card, 2%);
+        @include glow($primary, 10px);
+    }
+}
+
+// Outcome Section
+.outcome-section {
+    background: linear-gradient(180deg, $base-bg, darken($base-bg, 2%));
+}
+
+.outcome-content {
+    //max-width: 1000px;
+    justify-self: center;
+}
+
+.outcome-text {
+    color: rgba(#fff, 0.9);
+    font-size: 1.15rem;
+    line-height: 1.8;
+    background: $dark-card;
+    padding: 3rem;
+    border-radius: 12px;
+    border: 1px solid rgba($primary, 0.3);
+    position: relative;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background: linear-gradient(90deg, $primary, $secondary, $accent);
+    }
+}
+
+// Try Game Section
+.try-game-section {
+    padding: 5rem 0;
+    background: linear-gradient(135deg, rgba($primary, 0.05), rgba($secondary, 0.05));
+    position: relative;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, $primary, transparent);
+    }
+}
+
+.try-game-content {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.try-game-title {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    color: #fff;
+    margin-bottom: 2.5rem;
+    font-weight: 700;
+    @include text-glow($secondary);
+}
+
+.try-game-buttons {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    .btn {
+        padding: 1.2rem 3rem;
+        font-size: 1.1rem;
+    }
+}
+
+@include responsive(tablet) {
+    .overview-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .features-list{
+        grid-template-columns: 1fr;
+    }
+
+    .try-game-buttons {
+        flex-direction: column;
+        align-items: center;
+
+        .btn {
+            width: 100%;
+            max-width: 350px;
+        }
+    }
+}

@@ -1,0 +1,201 @@
+@import 'variables';
+@import 'mixins';
+@import 'animations';
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&family=VT323&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: $font-secondary;
+  background-color: $base-bg;
+  color: #fff;
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-primary;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.3s ease;
+}
+
+button {
+  font-family: $font-primary;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+// Custom scrollbar
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: $darker;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, $primary, $secondary);
+  border-radius: 10px;
+  
+  &:hover {
+    background: linear-gradient(180deg, lighten($primary, 10%), lighten($secondary, 10%));
+  }
+}
+
+// Selection
+::selection {
+  background: rgba($secondary, 0.3);
+  color: $secondary;
+}
+
+// Utility classes
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 $spacing-md;
+}
+
+.section {
+  padding: $spacing-xl 0;
+  position: relative;
+}
+
+.section-title {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  text-align: center;
+  margin-bottom: $spacing-lg;
+  position: relative;
+  display: inline-block;
+  left: 50%;
+  transform: translateX(-50%);
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, $primary, $secondary);
+  }
+}
+
+.btn {
+  padding: 12px 32px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+  }
+  
+  &:hover::before {
+    width: 300px;
+    height: 300px;
+  }
+  
+  &-primary {
+    background: linear-gradient(135deg, $primary, darken($primary, 10%));
+    color: #fff;
+    @include glow($primary, 15px);
+    
+    &:hover {
+      transform: translateY(-2px);
+      @include glow($primary, 25px);
+    }
+  }
+  
+  &-secondary {
+    background: transparent;
+    border: 2px solid $secondary;
+    color: $secondary;
+    
+    &:hover {
+      background: $secondary;
+      color: $darker;
+      @include glow($secondary, 15px);
+    }
+  }
+  
+  &-accent {
+    background: linear-gradient(135deg, $accent, darken($accent, 10%));
+    color: $darker;
+    
+    &:hover {
+      transform: translateY(-2px);
+      @include glow($accent, 20px);
+    }
+  }
+}
+
+.card {
+  background: $dark-card;
+  border-radius: 8px;
+  padding: $spacing-md;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, $secondary, transparent);
+    animation: scan-line 3s infinite;
+  }
+  
+  &:hover {
+    transform: translateY(-5px);
+    @include glow($primary, 10px);
+  }
+}
+
+// Canvas for Three.js background
+#bg-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: $z-background;
+}

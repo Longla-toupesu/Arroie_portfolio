@@ -1,0 +1,257 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+
+.experience-section {
+  background: linear-gradient(180deg, darken($base-bg, 2%) 0%, $base-bg 100%);
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, $primary, transparent);
+  }
+}
+
+.experience-block {
+  margin-bottom: 5rem;
+}
+
+.experience-timeline {
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.experience-card {
+  display: grid;
+  grid-template-columns: 60px 1fr;
+  gap: 2rem;
+  margin-bottom: 3rem;
+  position: relative;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.timeline-marker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.marker-dot {
+  width: 20px;
+  height: 20px;
+  background: $secondary;
+  border-radius: 50%;
+  border: 3px solid $base-bg;
+  box-shadow: 0 0 20px rgba($secondary, 0.6);
+  position: relative;
+  z-index: 2;
+  animation: pulse-glow 2s infinite;
+}
+
+.marker-line {
+  width: 2px;
+  flex: 1;
+  background: linear-gradient(180deg, $secondary, rgba($secondary, 0.2));
+  margin-top: 0.5rem;
+}
+
+.experience-content {
+  background: $dark-card;
+  padding: 2rem;
+  border-radius: 12px;
+  border: 1px solid rgba($primary, 0.2);
+  position: relative;
+  transition: all 0.3s ease;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 30px;
+    left: -10px;
+    width: 20px;
+    height: 20px;
+    background: $dark-card;
+    border-left: 1px solid rgba($primary, 0.2);
+    border-bottom: 1px solid rgba($primary, 0.2);
+    transform: rotate(45deg);
+  }
+
+  &:hover {
+    transform: translateX(10px);
+    border-color: $secondary;
+    @include glow($primary, 15px);
+  }
+}
+
+.exp-title {
+  font-size: 1.8rem;
+  color: $secondary;
+  margin-bottom: 0.75rem;
+  font-weight: 700;
+}
+
+.exp-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+  flex-wrap: wrap;
+  font-size: 1rem;
+
+  .company {
+    color: $accent;
+    font-weight: 600;
+  }
+
+  .separator {
+    color: rgba(#fff, 0.4);
+  }
+
+  .location {
+    color: rgba(#fff, 0.7);
+  }
+}
+
+.exp-period {
+  color: rgba(#fff, 0.6);
+  font-family: $font-mono;
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+  letter-spacing: 1px;
+}
+
+.exp-description {
+  color: rgba(#fff, 0.85);
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+  font-size: 1.05rem;
+}
+
+.exp-achievements {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  li {
+    color: rgba(#fff, 0.8);
+    margin-bottom: 0.75rem;
+    padding-left: 1.5rem;
+    position: relative;
+    line-height: 1.6;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .achievement-bullet {
+    position: absolute;
+    left: 0;
+    color: $secondary;
+    font-size: 1.2rem;
+  }
+}
+
+// Certifications
+.certifications-block {
+  margin-top: 5rem;
+}
+
+.certifications-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.cert-card {
+  background: $dark-card;
+  padding: 2.5rem 2rem;
+  border-radius: 12px;
+  text-align: center;
+  border: 1px solid rgba($primary, 0.2);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, $primary, $secondary, $accent);
+  }
+
+  &:hover {
+    transform: translateY(-10px);
+    border-color: $secondary;
+    @include glow($primary, 20px);
+
+    .cert-icon {
+      transform: scale(1.2) rotate(10deg);
+    }
+  }
+}
+
+.cert-icon {
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.cert-title {
+  font-size: 1.4rem;
+  color: $secondary;
+  margin-bottom: 0.75rem;
+  font-weight: 700;
+}
+
+.cert-issuer {
+  color: rgba(#fff, 0.8);
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+}
+
+.cert-year {
+  color: $accent;
+  font-family: $font-mono;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+@include responsive(tablet) {
+  .experience-card {
+    grid-template-columns: 40px 1fr;
+    gap: 1.5rem;
+  }
+
+  .marker-dot {
+    width: 16px;
+    height: 16px;
+  }
+
+  .experience-content {
+    padding: 1.5rem;
+
+    &::before {
+      display: none;
+    }
+  }
+
+  .certifications-grid {
+    grid-template-columns: 1fr;
+  }
+}

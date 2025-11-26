@@ -1,0 +1,33 @@
+<section class="testimonials-section section">
+  <div class="container">
+    <h2 class="section-title">WHAT TEAMMATES & CLIENTS SAY</h2>
+    <p class="testimonials-subtitle">
+      Feedback from those I've built awesome projects and systems with.
+    </p>
+
+    <div class="testimonials-grid">
+      <div class="testimonial-card" *ngFor="let testimonial of testimonials">
+        <div class="quote-icon">"</div>
+
+        <div class="testimonial-content">
+          <p class="testimonial-text">{{ testimonial.text }}</p>
+
+          <div class="rating">
+            <span class="star" *ngFor="let star of getStarArray(testimonial.rating)">★</span>
+          </div>
+        </div>
+
+        <div class="testimonial-author">
+          <div class="author-image">
+            <img [src]="testimonial.image" [alt]="testimonial.name">
+          </div>
+          <div class="author-info">
+            <h4 class="author-name">{{ testimonial.name }}</h4>
+            <p class="author-role">{{ testimonial.role }}</p>
+            <p class="author-company">{{ testimonial.company }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
