@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Router } from '@angular/router';
+import { SocialLinksService, SocialLink } from '../../services/social-links.service';
 
 @Component({
   selector: 'app-footer',
@@ -11,6 +12,8 @@ import { RouterModule, Router } from '@angular/router';
 })
 export class FooterComponent {
   currentYear = new Date().getFullYear();
+  socialLinks: SocialLink[] = [];
+  contactLinks: SocialLink[] = [];
 
   quickLinks = [
     { label: 'Home', path: '/' },
@@ -20,13 +23,13 @@ export class FooterComponent {
     { label: 'Contact', path: '/contact' }
   ];
 
-  socialLinks = [
-    { icon: 'G', url: 'mailto:kieradharke@gmail.com', label: 'Gmail' },
-    { icon: 'in', url: 'https://linkedin.com', label: 'LinkedIn' },
-    { icon: '📍', url: '#', label: 'Location' }
-  ];
-
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private socialLinksService: SocialLinksService
+  ) {
+    this.socialLinks = this.socialLinksService.getSocialMediaLinks();
+    this.contactLinks = this.socialLinksService.getContactLinks();
+  }
 
   navigateTo(path: string): void {
     this.router.navigate([path]).then(() => {

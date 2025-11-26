@@ -2,6 +2,7 @@ import { Component, OnInit, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
+import { SocialLinksService, SocialLink } from '../../services/social-links.service';
 
 @Component({
   selector: 'app-navbar',
@@ -14,6 +15,7 @@ export class NavbarComponent implements OnInit {
   isScrolled = false;
   isMobileMenuOpen = false;
   currentRoute = '';
+  socialLinks: SocialLink[] = [];
 
   navLinks = [
     { label: 'Home', path: '/', isExternal: false },
@@ -23,16 +25,15 @@ export class NavbarComponent implements OnInit {
     { label: 'Contact', path: '/contact', isExternal: false }
   ];
 
-  socialLinks = [
-    { icon: 'G', url: 'mailto:kieradharke@gmail.com', label: 'Gmail' },
-    { icon: 'f', url: 'https://facebook.com', label: 'Facebook' },
-    { icon: 'i', url: 'https://instagram.com', label: 'Instagram' },
-    { icon: 'in', url: 'https://linkedin.com', label: 'LinkedIn' }
-  ];
-
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private socialLinksService: SocialLinksService
+  ) {}
 
   ngOnInit(): void {
+    // Get social links for navbar
+    this.socialLinks = this.socialLinksService.getNavbarLinks();
+
     // Track current route
     this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))

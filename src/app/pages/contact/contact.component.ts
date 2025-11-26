@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { NavbarComponent } from '../../components/navbar/navbar.component';
 import { FooterComponent } from '../../components/footer/footer.component';
 import { AnimationService } from '../../services/animation.service';
+import { SocialLinksService, SocialLink } from '../../services/social-links.service';
 
 interface ContactForm {
   name: string;
@@ -31,31 +32,18 @@ export class ContactComponent implements OnInit, AfterViewInit {
   submitSuccess = false;
   submitError = false;
 
-  contactInfo = [
-    { 
-      icon: 'G', 
-      label: 'kieradharke@gmail.com', 
-      link: 'mailto:kieradharke@gmail.com',
-      type: 'email'
-    },
-    { 
-      icon: 'in', 
-      label: 'Chenwie Asang', 
-      link: 'https://linkedin.com',
-      type: 'linkedin'
-    },
-    { 
-      icon: '🎮', 
-      label: 'Chenwie#0012', 
-      link: '#',
-      type: 'discord'
-    }
-  ];
+  contactInfo: SocialLink[] = [];
 
-  constructor(private animationService: AnimationService) {}
+  constructor(
+    private animationService: AnimationService,
+    private socialLinksService: SocialLinksService
+  ) {}
 
   ngOnInit(): void {
     window.scrollTo(0, 0);
+    
+    // Get all social links for contact page
+    this.contactInfo = this.socialLinksService.getSocialLinks();
   }
 
   ngAfterViewInit(): void {
@@ -72,23 +60,18 @@ export class ContactComponent implements OnInit, AfterViewInit {
     this.submitSuccess = false;
     this.submitError = false;
 
-    // Simulate form submission (replace with actual API call)
     console.log('Form submitted:', this.formData);
 
-    // Create mailto link as fallback
     const mailtoLink = `mailto:kieradharke@gmail.com?subject=${encodeURIComponent(this.formData.subject)}&body=${encodeURIComponent(
       `Name: ${this.formData.name}\nEmail: ${this.formData.email}\n\nMessage:\n${this.formData.message}`
     )}`;
 
-    // Simulate API delay
     setTimeout(() => {
-      // Open mailto link
       window.location.href = mailtoLink;
       
       this.isSubmitting = false;
       this.submitSuccess = true;
       
-      // Reset form after 2 seconds
       setTimeout(() => {
         this.resetForm();
         this.submitSuccess = false;

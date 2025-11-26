@@ -18,14 +18,15 @@
         </li>
       </ul>
 
-      <!-- Social Links -->
-      <!--<div class="social-links desktop-nav">
+      <!-- Social Links 
+      <div class="social-links desktop-nav">
         <a *ngFor="let social of socialLinks" 
            [href]="social.url" 
            [title]="social.label"
+           [attr.data-color]="social.color"
            target="_blank"
            rel="noopener noreferrer">
-          {{ social.icon }}
+          <i [class]="social.icon"></i>
         </a>
       </div>-->
 
@@ -59,7 +60,7 @@
          [title]="social.label"
          target="_blank"
          rel="noopener noreferrer">
-        {{ social.icon }}
+        <i [class]="social.icon"></i>
       </a>
     </div>
   </div>
