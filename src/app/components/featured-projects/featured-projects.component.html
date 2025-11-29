@@ -1,9 +1,7 @@
-<section id="projects" class="featured-projects section">
+<section class="featured-projects section">
   <div class="container">
     <h2 class="section-title">FEATURED PROJECTS</h2>
-    <p class="projects-subtitle">
-      Explore some of my best work in game development and infrastructure.
-    </p>
+    <p class="projects-subtitle">Some highlights from my portfolio</p>
 
     <div class="projects-grid">
       <div class="project-card" *ngFor="let project of projects">
@@ -20,24 +18,25 @@
           <p class="project-role"><strong>Role:</strong> {{ project.role }}</p>
 
           <div class="project-tags">
-            <span class="tag" *ngFor="let tag of project.tags">{{ tag }}</span>
+            <span class="tag" *ngFor="let tag of project.tags.slice(0, 3)">{{ tag }}</span>
           </div>
 
           <div class="project-actions">
             <button class="btn btn-primary" (click)="viewProjectDetails(project.id)">
               VIEW DETAILS
             </button>
-            <button class="btn btn-secondary" (click)="viewCode(project.id)">
-              VIEW CODE
+            <button 
+              *ngIf="project.tryItNowLink" 
+              class="btn btn-secondary" 
+              (click)="tryItNow(project)">
+              {{ project.tryItNowLabel || 'TRY IT NOW' }}
             </button>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="cta-section">
-      <h3 class="cta-title">READY TO LEVEL UP YOUR NEXT GAME?</h3>
-      <p class="cta-subtitle">Let's create something unforgettable</p>
+    <div class="view-all-section">
       <button class="btn btn-accent" (click)="viewAllProjects()">
         VIEW ALL PROJECTS
       </button>

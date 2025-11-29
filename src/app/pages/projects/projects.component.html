@@ -61,8 +61,11 @@
                 <button class="btn btn-primary" (click)="viewProjectDetails(project.id)">
                   VIEW DETAILS
                 </button>
-                <button class="btn btn-secondary" (click)="viewCode(project)">
-                  VIEW CODE
+                <button 
+                  *ngIf="project.tryItNowLink" 
+                  class="btn btn-secondary" 
+                  (click)="tryItNow(project)">
+                  {{ project.tryItNowLabel || 'TRY IT NOW' }}
                 </button>
               </div>
             </div>
@@ -73,7 +76,7 @@
         <div class="cta-section">
           <h3 class="cta-title">READY TO LEVEL UP YOUR NEXT GAME?<br>LET'S GET STARTED</h3>
           <button class="btn btn-accent" (click)="navigateToContact()">
-            VIEW DETAILS
+            GET IN TOUCH
           </button>
         </div>
       </div>

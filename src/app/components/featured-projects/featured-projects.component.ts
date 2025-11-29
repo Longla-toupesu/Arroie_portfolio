@@ -18,7 +18,7 @@ export class FeaturedProjectsComponent implements OnInit, AfterViewInit {
     private animationService: AnimationService,
     private projectsService: ProjectsService,
     private router: Router
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.projectsService.getFeaturedProjects(3).subscribe(projects => {
@@ -57,9 +57,10 @@ export class FeaturedProjectsComponent implements OnInit, AfterViewInit {
     this.router.navigate(['/projects', projectId]);
   }
 
-  viewCode(projectId: number): void {
-    // Open GitHub or external link
-    console.log('View code for project:', projectId);
+  tryItNow(project: Project): void {
+    if (project.tryItNowLink) {
+      window.open(project.tryItNowLink, '_blank');
+    }
   }
 
   viewAllProjects(): void {

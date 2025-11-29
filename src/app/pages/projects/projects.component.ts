@@ -62,9 +62,9 @@ export class ProjectsComponent implements OnInit, AfterViewInit {
     this.router.navigate(['/projects', projectId]);
   }
 
-  viewCode(project: Project): void {
-    if (project.links?.github) {
-      window.open(project.links.github, '_blank');
+  tryItNow(project: Project): void {
+    if (project.tryItNowLink) {
+      window.open(project.tryItNowLink, '_blank');
     }
   }
 
