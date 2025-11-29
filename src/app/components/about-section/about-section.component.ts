@@ -29,7 +29,7 @@ export class AboutSectionComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    this.animationService.scrollTriggerAnimation('.about-title', {
+    /*this.animationService.scrollTriggerAnimation('.about-title', {
       x: -50,
       opacity: 0,
       duration: 0.8
@@ -40,7 +40,7 @@ export class AboutSectionComponent implements OnInit, AfterViewInit {
       opacity: 0,
       duration: 0.8,
       delay: 0.2
-    });
+    });*/
 
     setTimeout(() => {
       const statCards = document.querySelectorAll('.stat-card');

@@ -39,7 +39,7 @@
 
 .page-subtitle {
   font-size: 1.2rem;
-  color: rgba(#fff, 0.8);
+  color: #e8e8e8;
   max-width: 600px;
   margin: 0 auto;
 }
@@ -80,7 +80,7 @@
     background: $primary;
     border-color: $primary;
     color: #fff;
-    @include glow($primary, 15px);
+    box-shadow: 0 0 30px rgba($primary, 0.6);
   }
 }
 
@@ -96,16 +96,18 @@
 }
 
 .project-card {
-  background: $dark-card;
+  background: #1e1e1e; // SOLID BACKGROUND
   border-radius: 8px;
   overflow: hidden;
-  border: 1px solid rgba($primary, 0.3);
+  border: 2px solid rgba($primary, 0.5);
   transition: all 0.3s ease;
+  opacity: 1 !important; // FORCE NO FADING
+  transform: translateY(0) !important; // FORCE NO OFFSET
 
   &:hover {
-    transform: translateY(-8px);
+    transform: translateY(-8px) !important;
     border-color: $secondary;
-    @include glow($primary, 20px);
+    box-shadow: 0 0 30px rgba($primary, 0.6), 0 0 60px rgba($primary, 0.3);
 
     .project-image {
       transform: scale(1.05);
@@ -140,7 +142,7 @@
   font-size: 0.9rem;
   border: 1px solid $secondary;
   letter-spacing: 1px;
-  @include glow($secondary, 10px);
+  box-shadow: 0 0 20px rgba($secondary, 0.5);
 }
 
 .project-info {
@@ -149,7 +151,7 @@
 
 .project-title {
   font-size: 1.1rem;
-  color: rgba(#fff, 0.9);
+  color: #e8e8e8;
   margin-bottom: 1rem;
   font-weight: 400;
 
@@ -161,24 +163,24 @@
 }
 
 .project-description {
-  color: rgba(#fff, 0.85);
+  color: #e8e8e8;
   font-size: 0.95rem;
   line-height: 1.6;
   margin-bottom: 1rem;
 
   strong {
-    color: rgba(#fff, 0.95);
+    color: #fff;
     font-weight: 600;
   }
 }
 
 .project-role {
-  color: rgba(#fff, 0.85);
+  color: #e8e8e8;
   font-size: 0.95rem;
   margin-bottom: 1.5rem;
 
   strong {
-    color: rgba(#fff, 0.95);
+    color: #fff;
     font-weight: 600;
   }
 }
@@ -193,7 +195,7 @@
 
 .tech-label {
   font-size: 0.9rem;
-  color: rgba(#fff, 0.7);
+  color: #ccc;
   font-weight: 600;
 }
 
@@ -228,10 +230,11 @@
 .cta-section {
   text-align: center;
   padding: 4rem 2rem;
-  background: linear-gradient(135deg, rgba($primary, 0.05), rgba($secondary, 0.05));
+  background: #1e1e1e; // SOLID BACKGROUND
   border-radius: 12px;
-  border: 1px solid rgba($primary, 0.3);
+  border: 2px solid rgba($primary, 0.5);
   margin-top: 3rem;
+  opacity: 1 !important;
 }
 
 .cta-title {

@@ -25,11 +25,11 @@ export class SkillsSectionComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    this.animationService.scrollTriggerAnimation('.section-title', {
+    /*this.animationService.scrollTriggerAnimation('.section-title', {
       y: 50,
       opacity: 0,
       duration: 0.8
-    });
+    });*/
 
     setTimeout(() => {
       const skillCategories = document.querySelectorAll('.skill-category');

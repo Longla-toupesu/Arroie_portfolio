@@ -25,11 +25,11 @@ export class TechStackComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    this.animationService.scrollTriggerAnimation('.tech-stack-title', {
+    /*this.animationService.scrollTriggerAnimation('.tech-stack-title', {
       y: 50,
       opacity: 0,
       duration: 0.8
-    });
+    });*/
 
     this.animationService.scrollTriggerAnimation('.tech-grid', {
       y: 50,

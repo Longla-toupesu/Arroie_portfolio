@@ -23,7 +23,7 @@ export class ContactCtaComponent implements OnInit, AfterViewInit {
     this.animationService.scrollTriggerAnimation('.cta-content', {
       y: 50,
       opacity: 0,
-      duration: 0.8
+      duration: 0.2
     });
   }
 

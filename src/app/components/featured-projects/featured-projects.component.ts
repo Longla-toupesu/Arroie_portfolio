@@ -27,7 +27,7 @@ export class FeaturedProjectsComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    this.animationService.scrollTriggerAnimation('.section-title', {
+    /*this.animationService.scrollTriggerAnimation('.section-title', {
       y: 50,
       opacity: 0,
       duration: 0.8
@@ -38,7 +38,7 @@ export class FeaturedProjectsComponent implements OnInit, AfterViewInit {
       opacity: 0,
       duration: 0.8,
       delay: 0.2
-    });
+    });*/
 
     setTimeout(() => {
       const projectCards = document.querySelectorAll('.project-card');

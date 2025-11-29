@@ -11,17 +11,14 @@ export class AnimationService {
   
   fadeInUp(element: Element | string, delay = 0): void {
     gsap.from(element, {
-      y: 50,
-      opacity: 0,
-      duration: 0.8,
-      delay,
-      ease: 'power3.out'
+      y: 0,
+      opacity: 1,
     });
   }
 
   fadeIn(element: Element | string, delay = 0): void {
     gsap.from(element, {
-      opacity: 0,
+      opacity: 1,
       duration: 0.6,
       delay,
       ease: 'power2.out'
@@ -73,9 +70,47 @@ export class AnimationService {
       ...animationProps,
       scrollTrigger: {
         trigger: element,
-        start: 'top 80%',
-        end: 'bottom 20%',
-        toggleActions: 'play none none reverse'
+        start: 'top 85%', // TRIGGER EARLIER (was 80%)
+        end: 'bottom 10%', // STAY VISIBLE LONGER (was 20%)
+        toggleActions: 'play none none none', // DON'T REVERSE ON SCROLL UP
+        once: true, // ANIMATE ONLY ONCE
+        markers: false // Set to true for debugging
+      }
+    });
+  }
+
+  // NEW METHOD: Scroll animation that stays visible
+  scrollFadeInUp(element: Element | string, delay = 0): void {
+    gsap.from(element, {
+      y: 50,
+      opacity: 0,
+      duration: 1, // LONGER DURATION
+      delay,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: element,
+        start: 'top 85%', // TRIGGER EARLIER
+        end: 'bottom 10%', // STAY VISIBLE LONGER
+        toggleActions: 'play none none none', // DON'T REVERSE
+        once: true // ONLY ONCE
+      }
+    });
+  }
+
+  // NEW METHOD: Stagger with scroll trigger
+  staggerScrollFadeInUp(elements: string, staggerDelay = 0.15): void {
+    gsap.from(elements, {
+      y: 50,
+      opacity: 0,
+      duration: 1, // LONGER DURATION
+      stagger: staggerDelay,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: elements,
+        start: 'top 85%', // TRIGGER EARLIER
+        end: 'bottom 10%', // STAY VISIBLE LONGER
+        toggleActions: 'play none none none', // DON'T REVERSE
+        once: true // ONLY ONCE
       }
     });
   }
@@ -144,5 +179,10 @@ export class AnimationService {
       
       type();
     }
+  }
+
+  // Refresh ScrollTrigger (useful after dynamic content loads)
+  refreshScrollTrigger(): void {
+    ScrollTrigger.refresh();
   }
 }
