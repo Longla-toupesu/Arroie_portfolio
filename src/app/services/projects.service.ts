@@ -14,7 +14,7 @@ export interface Project {
   downloads?: string;
   devTime: string;
   teamSize: number;
-  gallery: string[];
+  gallery: {path: string, imgName: string}[];
   features: string[];
   outcome: string;
   links?: {
@@ -53,12 +53,12 @@ export class ProjectsService {
       tryItNowLink: 'https://mykiyi.itch.io/circuit-chakula',
       tryItNowLabel: 'PLAY DEMO',
       gallery: [
-        'assets/images/part_one/mikiyi/Circuit_Chakula/1.png',
-        'assets/images/part_one/mikiyi/Circuit_Chakula/2.png',
-        'assets/images/part_one/mikiyi/Circuit_Chakula/3.jpg',
-        'assets/images/part_one/mikiyi/Circuit_Chakula/4.jpg',
-        'assets/images/part_one/mikiyi/Circuit_Chakula/1.jpg',
-        'assets/images/part_one/mikiyi/Circuit_Chakula/2.jpg'
+        {path: 'assets/images/part_one/mikiyi/Circuit_Chakula/1.png', imgName: "Player Home"},
+        {path: 'assets/images/part_one/mikiyi/Circuit_Chakula/2.png', imgName: "Phone Menu"},
+        {path: 'assets/images/part_one/mikiyi/Circuit_Chakula/3.jpg', imgName: "Workshop 1"},
+        {path: 'assets/images/part_one/mikiyi/Circuit_Chakula/4.jpg', imgName: "WorkDay Complete"},
+        {path: 'assets/images/part_one/mikiyi/Circuit_Chakula/1.jpg', imgName: "Workshop 2"},
+        {path: 'assets/images/part_one/mikiyi/Circuit_Chakula/2.jpg', imgName: "Connect Minigame"}
       ],
       features: [
         'Designed engaging puzzle mechanics integrated with visual novel storytelling',
@@ -94,9 +94,9 @@ export class ProjectsService {
       tryItNowLink: 'https://play.google.com/store/apps/details?id=com.maliyo.safaricity',
       tryItNowLabel: 'DOWNLOAD NOW',
       gallery: [
-        'assets/images/part_one/maliyo/Safari_City/1.webp',
-        'assets/images/part_one/maliyo/Safari_City/2.webp',
-        'assets/images/part_one/maliyo/Safari_City/3.webp'
+        {path: 'assets/images/part_one/maliyo/Safari_City/1.webp', imgName: 'Renovate Building'},
+        {path: 'assets/images/part_one/maliyo/Safari_City/2.webp', imgName: 'Unlock Episodes'},
+        {path: 'assets/images/part_one/maliyo/Safari_City/3.webp', imgName: 'Play Match 3'}
       ],
       features: [
         'Designed over 200 progressively challenging match-3 puzzle levels',
@@ -131,11 +131,11 @@ export class ProjectsService {
       tryItNowLink: 'https://play.google.com/store/apps/details?id=com.maliyo.crazyludo',
       tryItNowLabel: 'DOWNLOAD NOW',
       gallery: [
-        'assets/images/part_one/maliyo/Crazy_Ludo/1.webp',
-        'assets/images/part_one/maliyo/Crazy_Ludo/2.webp',
-        'assets/images/part_one/maliyo/Crazy_Ludo/3.webp',
-        'assets/images/part_one/maliyo/Crazy_Ludo/4.webp',
-        'assets/images/part_one/maliyo/Crazy_Ludo/5.webp'
+        {path: 'assets/images/part_one/maliyo/Crazy_Ludo/1.webp', imgName: 'Choose Powerups'},
+        {path: 'assets/images/part_one/maliyo/Crazy_Ludo/2.webp', imgName: 'Board & Hazards'},
+        {path: 'assets/images/part_one/maliyo/Crazy_Ludo/3.webp', imgName: 'Board Skins'},
+        {path: 'assets/images/part_one/maliyo/Crazy_Ludo/4.webp', imgName: 'Daily Rewards'},
+        {path: 'assets/images/part_one/maliyo/Crazy_Ludo/5.webp', imgName: 'Friendly Contests'}
       ],
       features: [
         'Managed project timeline, milestones, and team coordination as Project Manager',
@@ -171,10 +171,10 @@ export class ProjectsService {
       tryItNowLink: 'https://play.google.com/store/apps/details?id=com.maliyo.secretletter',
       tryItNowLabel: 'DOWNLOAD NOW',
       gallery: [
-        'assets/images/part_one/maliyo/Secret_Letter/1.webp',
-        'assets/images/part_one/maliyo/Secret_Letter/2.webp',
-        'assets/images/part_one/maliyo/Secret_Letter/3.webp',
-        'assets/images/part_one/maliyo/Secret_Letter/4.webp'
+        {path: 'assets/images/part_one/maliyo/Secret_Letter/1.webp', imgName: 'Global Leaderboards'},
+        {path: 'assets/images/part_one/maliyo/Secret_Letter/2.webp', imgName: 'Level Complete'},
+        {path: 'assets/images/part_one/maliyo/Secret_Letter/3.webp', imgName: 'Word Cases'},
+        {path: 'assets/images/part_one/maliyo/Secret_Letter/4.webp', imgName: 'Gameplay'}
       ],
       features: [
         'Designed core gameplay mechanics combining word puzzles with mystery-solving narrative',
@@ -207,11 +207,11 @@ export class ProjectsService {
       tryItNowLink: 'https://alienbluez.itch.io/curtain-call-crusade',
       tryItNowLabel: 'PLAY DEMO',
       gallery: [
-        'assets/images/part_one/personal/Curtain_Call_Crusade/1.png',
-        'assets/images/part_one/personal/Curtain_Call_Crusade/2.png',
-        'assets/images/part_one/personal/Curtain_Call_Crusade/3.png',
-        'assets/images/part_one/personal/Curtain_Call_Crusade/4.png',
-        'assets/images/part_one/personal/Curtain_Call_Crusade/5.png'
+        {path: 'assets/images/part_one/personal/Curtain_Call_Crusade/1.png', imgName: 'Splash Screen'},
+        {path: 'assets/images/part_one/personal/Curtain_Call_Crusade/2.png', imgName: 'Gameplay 1'},
+        {path: 'assets/images/part_one/personal/Curtain_Call_Crusade/3.png', imgName: 'Shooter Minigame'},
+        {path: 'assets/images/part_one/personal/Curtain_Call_Crusade/4.png', imgName: 'Gameplay 2'},
+        {path: 'assets/images/part_one/personal/Curtain_Call_Crusade/5.png', imgName: 'Game Menu'}
       ],
       features: [
         'Programmed gameplay systems for branching dialogue and relationship tracking',
@@ -244,8 +244,8 @@ export class ProjectsService {
       tryItNowLink: 'https://itch.io/jam/gmtk-2022/rate/1623456',
       tryItNowLabel: 'PLAY ON ITCH.IO',
       gallery: [
-        'assets/images/part_one/personal/Fantastic_Shot_Sire/1.png',
-        'assets/images/part_one/personal/Fantastic_Shot_Sire/2.png'
+        {path: 'assets/images/part_one/personal/Fantastic_Shot_Sire/1.png', imgName: 'Puzzle 1'},
+        {path: 'assets/images/part_one/personal/Fantastic_Shot_Sire/2.png', imgName: 'Puzzle 2'}
       ],
       features: [
         'Implemented core physics-based shooting mechanics under tight 48-hour deadline',

@@ -57,8 +57,8 @@
         
         <div class="gallery-grid">
           <div class="gallery-item" *ngFor="let image of project.gallery; let i = index">
-            <img [src]="image" [alt]="'Screenshot ' + (i + 1)">
-            <p class="gallery-caption">Screenshot Name</p>
+            <img [src]="image.path" [alt]="'Screenshot ' + (i + 1)">
+            <p class="gallery-caption">{{image.imgName}}</p>
           </div>
         </div>
       </div>
