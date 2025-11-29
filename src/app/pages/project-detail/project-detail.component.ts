@@ -15,6 +15,7 @@ import { ProjectsService, Project } from '../../services/projects.service';
 export class ProjectDetailComponent implements OnInit {
   project?: Project;
   selectedGalleryImage = 0;
+  similarProjects: Project[] = [];  // ADD THIS
 
   constructor(
     private route: ActivatedRoute,
@@ -26,13 +27,25 @@ export class ProjectDetailComponent implements OnInit {
     window.scrollTo(0, 0);
     
     const id = Number(this.route.snapshot.paramMap.get('id'));
-    
     this.projectsService.getProjectById(id).subscribe(project => {
       if (project) {
         this.project = project;
+        this.loadSimilarProjects(project);  // ADD THIS
       } else {
         this.router.navigate(['/projects']);
       }
+    });
+  }
+
+  loadSimilarProjects(currentProject: Project): void {
+    this.projectsService.getProjects().subscribe(projects => {
+      this.similarProjects = projects
+        .filter(p => 
+          p.id !== currentProject.id && 
+          (p.platform === currentProject.platform || 
+           p.tags?.some(tag => currentProject.tags?.includes(tag)))
+        )
+        .slice(0, 3); // Show max 3 similar projects
     });
   }
 
@@ -54,5 +67,18 @@ export class ProjectDetailComponent implements OnInit {
     if (this.project?.links?.github) {
       window.open(this.project.links.github, '_blank');
     }
+  }
+
+  tryItNow(): void {
+    if (this.project?.tryItNowLink) {
+      window.open(this.project.tryItNowLink, '_blank');
+    }
+  }
+
+  viewSimilarProject(projectId: number): void {
+    this.router.navigate(['/projects', projectId]).then(() => {
+      window.scrollTo(0, 0);
+      this.ngOnInit();
+    });
   }
 }

@@ -16,10 +16,9 @@
     <section class="overview-section section">
       <div class="container">
         <h2 class="section-title">OVERVIEW</h2>
-        
         <div class="overview-content">
           <p class="overview-description">{{ project.description }}</p>
-
+          
           <div class="overview-grid">
             <div class="overview-item">
               <div class="item-label">Role</div>
@@ -54,7 +53,6 @@
     <section class="gallery-section section" *ngIf="project.gallery && project.gallery.length > 0">
       <div class="container">
         <h2 class="section-title">GALLERY</h2>
-        
         <div class="gallery-grid">
           <div class="gallery-item" *ngFor="let image of project.gallery; let i = index">
             <img [src]="image" [alt]="'Screenshot ' + (i + 1)">
@@ -68,7 +66,6 @@
     <section class="features-section section" *ngIf="project.features">
       <div class="container">
         <h2 class="section-title">KEY FEATURES & CONTRIBUTIONS</h2>
-        
         <div class="features-list">
           <div class="feature-item" *ngFor="let feature of project.features">
             {{ feature }}
@@ -81,29 +78,70 @@
     <section class="outcome-section section" *ngIf="project.outcome">
       <div class="container">
         <h2 class="section-title">OUTCOME</h2>
-        
         <div class="outcome-content">
           <p class="outcome-text">{{ project.outcome }}</p>
         </div>
       </div>
     </section>
 
-    <!-- Try the Game Section -->
-    <section class="try-game-section">
+    <!-- UPDATED: Try It Now Section with Primary CTA -->
+    <section class="try-game-section" *ngIf="project.tryItNowLink || project.links?.live || project.links?.github">
       <div class="container">
         <div class="try-game-content">
-          <h2 class="try-game-title">TRY THE GAME</h2>
+          <h2 class="try-game-title">
+            {{ project.downloads ? 'JOIN ' + project.downloads + ' PLAYERS!' : 'READY TO EXPERIENCE IT?' }}
+          </h2>
+          
           <div class="try-game-buttons">
-            <button class="btn btn-primary" (click)="openLiveDemo()" *ngIf="project.links?.live">
-              PLAY ON ITCH.IO
+            <!-- Primary Try It Now Button -->
+            <button class="btn btn-accent btn-large" (click)="tryItNow()" *ngIf="project.tryItNowLink">
+              <i class="fas fa-rocket"></i> {{ project.tryItNowLabel || 'TRY IT NOW' }}
+            </button>
+
+            <!-- Alternative buttons if no tryItNowLink -->
+            <button class="btn btn-primary" (click)="openLiveDemo()" *ngIf="!project.tryItNowLink && project.links?.live">
+              <i class="fas fa-play"></i> PLAY ON ITCH.IO
             </button>
             <button class="btn btn-secondary" (click)="openGithub()" *ngIf="project.links?.github">
-              VIEW GITHUB REPO
+              <i class="fab fa-github"></i> VIEW GITHUB REPO
             </button>
           </div>
         </div>
       </div>
     </section>
+
+    <!-- NEW: Similar Projects Section -->
+    <section class="similar-projects-section section" *ngIf="similarProjects.length > 0">
+      <div class="container">
+        <h2 class="section-title">SIMILAR PROJECTS</h2>
+        <p class="section-subtitle">You might also be interested in these projects</p>
+        
+        <div class="similar-projects-grid">
+          <div class="similar-project-card" *ngFor="let similarProject of similarProjects">
+            <div class="similar-project-image">
+              <img [src]="similarProject.image" [alt]="similarProject.title">
+              <div class="platform-badge">{{ similarProject.platform }}</div>
+            </div>
+            
+            <div class="similar-project-content">
+              <h3 class="similar-project-title">{{ similarProject.title }}</h3>
+              <p class="similar-project-description">
+                {{ similarProject.description.length > 120 ? (similarProject.description | slice:0:120) + '...' : similarProject.description }}
+              </p>
+              
+              <div class="similar-project-tags">
+                <span class="tag" *ngFor="let tag of similarProject.tags?.slice(0, 3)">{{ tag }}</span>
+              </div>
+              
+              <button class="btn btn-secondary" (click)="viewSimilarProject(similarProject.id)">
+                <i class="fas fa-arrow-right"></i> VIEW PROJECT
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
   </main>
 
   <app-footer></app-footer>
