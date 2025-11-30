@@ -130,7 +130,7 @@
               </p>
               
               <div class="similar-project-tags">
-                <span class="tag" *ngFor="let tag of similarProject.tags?.slice(0, 3)">{{ tag }}</span>
+                <span class="tag" *ngFor="let tag of similarProject.tags.slice(0, 3)">{{ tag }}</span>
               </div>
               
               <button class="btn btn-secondary" (click)="viewSimilarProject(similarProject.id)">

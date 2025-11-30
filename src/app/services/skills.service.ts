@@ -59,13 +59,14 @@ export class SkillsService {
   ];
 
   private techStack: TechItem[] = [
-    { name: 'Unity 2D/3D', icon: '🎮', category: 'Game Development' },
-    { name: 'C#', icon: '💻', category: 'Programming' },
-    { name: 'Firebase', icon: '🔥', category: 'Backend & Tools' },
-    { name: 'Jenkins', icon: '⚙️', category: 'CI/CD Automation' },
-    { name: 'Azure PlayFab', icon: '☁️', category: 'Cloud Solutions' },
-    { name: 'GitHub', icon: '📦', category: 'Version Control' },
-    { name: 'Blender', icon: '🎨', category: '3D Modeling' }
+    { name: 'Unity 2D/3D', icon: 'fa-brands fa-unity', category: 'Game Development' },
+    { name: 'C#', icon: 'fas fa-code', category: 'Programming' },
+    { name: 'Firebase', icon: 'fas fa-fire', category: 'Backend & Tools' },
+    { name: 'Jenkins', icon: 'fa-brands fa-jenkins', category: 'CI/CD Automation' },
+    { name: 'Azure PlayFab', icon: 'fas fa-cloud', category: 'Cloud Solutions' },
+    { name: 'GitHub', icon: 'fab fa-github', category: 'Version Control' },
+    { name: 'Blender', icon: 'fas fa-cube', category: '3D Modeling' },
+    { name: 'Analytics', icon: 'fas fa-chart-line', category: 'Player behavior tracking' },
   ];
 
   private certifications: Certification[] = [

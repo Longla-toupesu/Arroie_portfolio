@@ -7,7 +7,7 @@
 
     <div class="tech-grid">
       <div class="tech-card" *ngFor="let tech of techStack">
-        <div class="tech-icon">{{ tech.icon }}</div>
+        <div class="tech-icon"><i class="{{ tech.icon }}"></i></div>
         <h3 class="tech-name">{{ tech.name }}</h3>
         <p class="tech-category">{{ tech.category }}</p>
       </div>

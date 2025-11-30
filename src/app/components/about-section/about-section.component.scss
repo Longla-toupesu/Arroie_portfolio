@@ -4,6 +4,7 @@
 .about-section {
   background: linear-gradient(180deg, $base-bg 0%, darken($base-bg, 2%) 100%);
   position: relative;
+  padding: 5rem 0;  // Ensure proper padding
 
   &::before {
     content: '';
@@ -19,6 +20,34 @@
 .about-header {
   text-align: center;
   margin-bottom: 4rem;
+  width: 100%;
+}
+
+.section-title {
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  background: linear-gradient(135deg, $primary, $secondary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-align: center;
+  display: block;
+  margin: 0 auto;
+  position: relative;
+
+  // Add underline decoration
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background: linear-gradient(90deg, $primary, $secondary);
+  }
 }
 
 .about-main {
@@ -30,13 +59,18 @@
 
 // Profile Card
 .profile-card {
-  background: $dark-card;
+  background: #1e1e1e;
   border-radius: 16px;
   padding: 2.5rem;
-  border: 1px solid rgba($primary, 0.3);
+  border: 2px solid rgba($primary, 0.3);
   position: sticky;
   top: 100px;
-  @include glow($primary, 10px);
+  transition: all 0.3s ease;
+
+  &:hover {
+    border-color: $secondary;
+    box-shadow: 0 0 30px rgba($primary, 0.4);
+  }
 }
 
 .profile-image-wrapper {
@@ -47,16 +81,29 @@
 .profile-image {
   width: 200px;
   height: 200px;
-  margin: 0 auto 1rem;
+  margin: 0 auto 1.5rem;
   position: relative;
+  border-radius: 50%;
+  overflow: hidden;
 
   &::before {
     content: '';
     position: absolute;
-    inset: -5px;
+    inset: -4px;
     background: linear-gradient(135deg, $primary, $secondary, $accent);
     border-radius: 50%;
+    z-index: -1;
     animation: spin 8s linear infinite;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: -8px;
+    background: radial-gradient(circle, rgba($primary, 0.4) 0%, transparent 70%);
+    border-radius: 50%;
+    z-index: -2;
+    filter: blur(10px);
   }
 }
 
@@ -69,21 +116,19 @@
   }
 }
 
-.avatar-placeholder {
+.profile-photo {
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, darken($primary, 20%), darken($secondary, 20%));
+  object-fit: cover;
+  object-position: center;
   border-radius: 50%;
-  @include flex-center;
   position: relative;
   z-index: 1;
+  border: 3px solid $base-bg;
+  transition: transform 0.3s ease;
 
-  .avatar-text {
-    font-size: 5rem;
-    font-weight: 700;
-    color: #fff;
-    font-family: $font-primary;
-    text-shadow: 0 0 20px rgba($secondary, 0.8);
+  &:hover {
+    transform: scale(1.05);
   }
 }
 
@@ -93,7 +138,7 @@
   gap: 0.5rem;
   padding: 0.5rem 1.5rem;
   background: rgba($secondary, 0.1);
-  border: 1px solid $secondary;
+  border: 2px solid $secondary;
   border-radius: 20px;
   font-size: 0.9rem;
   color: $secondary;
@@ -104,7 +149,19 @@
     height: 10px;
     background: $secondary;
     border-radius: 50%;
-    animation: pulse-glow 2s infinite;
+    animation: pulse-dot 2s infinite;
+    box-shadow: 0 0 8px $secondary;
+  }
+}
+
+@keyframes pulse-dot {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.7;
   }
 }
 
@@ -143,10 +200,17 @@
     width: 100%;
     font-size: 0.95rem;
     padding: 0.85rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+
+    i {
+      font-size: 1.1rem;
+    }
   }
 }
 
-// About Content
 .about-content {
   display: flex;
   flex-direction: column;
@@ -154,10 +218,10 @@
 }
 
 .about-intro {
-  background: $dark-card;
+  background: #1e1e1e;
   padding: 3rem;
   border-radius: 16px;
-  border: 1px solid rgba($primary, 0.3);
+  border: 2px solid rgba($primary, 0.3);
   position: relative;
   overflow: hidden;
 
@@ -186,12 +250,16 @@
   line-height: 1.8;
   margin-bottom: 1.5rem;
 
+  strong {
+    color: $secondary;
+    font-weight: 700;
+  }
+
   &:last-child {
     margin-bottom: 0;
   }
 }
 
-// Stats Row
 .stats-row {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -199,10 +267,10 @@
 }
 
 .stat-item {
-  background: $dark-card;
+  background: #1e1e1e;
   padding: 2rem 1.5rem;
   border-radius: 12px;
-  border: 1px solid rgba($primary, 0.3);
+  border: 2px solid rgba($primary, 0.3);
   display: flex;
   align-items: center;
   gap: 1.5rem;
@@ -211,10 +279,11 @@
   &:hover {
     transform: translateY(-5px);
     border-color: $secondary;
-    @include glow($primary, 15px);
+    box-shadow: 0 0 30px rgba($primary, 0.4);
 
-    .stat-icon {
+    .stat-icon i {
       transform: scale(1.2);
+      color: $secondary;
     }
   }
 }
@@ -222,7 +291,12 @@
 .stat-icon {
   font-size: 3rem;
   flex-shrink: 0;
-  transition: transform 0.3s ease;
+  color: $primary;
+  transition: all 0.3s ease;
+
+  i {
+    transition: all 0.3s ease;
+  }
 }
 
 .stat-details {
@@ -236,7 +310,7 @@
   font-family: $font-primary;
   line-height: 1;
   margin-bottom: 0.5rem;
-  @include text-glow($secondary);
+  text-shadow: 0 0 10px rgba($secondary, 0.5);
 }
 
 .stat-label {
@@ -256,6 +330,11 @@
   .profile-card {
     position: relative;
     top: 0;
+  }
+
+  .profile-image {
+    width: 180px;
+    height: 180px;
   }
 
   .about-intro {
